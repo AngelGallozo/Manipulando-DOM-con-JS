@@ -10,19 +10,29 @@ const createTask = (event) =>{
     task.classList.add('card');
     input.value = "";
     //backticks
-    const content =`<div>
-    <i class="far fa-check-square icon"></i>
-    <span class="task">${value}</span>
-    </div>
+    const taskContent = document.createElement("div");
+    const taskTitle = document.createElement("span");
+    taskTitle.classList.add("task");
+    taskTitle.innerHTML = value;
+    taskContent.appendChild(checkComplete());
+    taskContent.appendChild(taskTitle);
+    const content =`
     <i class="fas fa-trash-alt trashIcon icon"></i>`;
-    task.innerHTML = content;
+    //task.innerHTML = content;
+    task.appendChild(taskContent);
     list.appendChild(task);
 }
 
 //listener del boton
 btn.addEventListener("click", createTask);
 
-
+const checkComplete = ()=>{
+    const i = document.createElement("i");
+    i.classList.add("far fa-check-square icon")
+    i.classList.add("fa-check-square")
+    i.classList.add("icon")
+    return i;
+}
 
 
 
